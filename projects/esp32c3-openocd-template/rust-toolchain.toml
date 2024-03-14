@@ -1,0 +1,5 @@
+[toolchain]
+# nightly-2023-11-14
+channel = "nightly"
+components = ["rust-src"]
+targets = ["riscv32imc-unknown-none-elf"]

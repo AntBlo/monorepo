@@ -1,0 +1,42 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // more info at: https://github.com/Marus/cortex-debug/blob/master/package.json
+      "name": "Attach",
+      "type": "cortex-debug",
+      "request": "attach",
+      "cwd": "${workspaceRoot}",
+      "executable": "target/xtensa-esp32-none-elf/debug/${workspaceFolderBasename}", //!MODIFY
+      "servertype": "openocd",
+      "interface": "jtag",
+      // "toolchainPrefix": "xtensa-esp32-elf", //!MODIFY
+      "serverpath": "../../downloaded-deps/esp-tools/openocd-esp32/bin/openocd", //!MODIFY
+      "openOCDPreConfigLaunchCommands": [
+        "set ESP_RTOS none"
+      ],
+      "openOCDLaunchCommands": [
+        "adapter speed 10000"
+      ],
+      "gdbPath": "../../downloaded-deps/esp-tools/xtensa-esp-elf-gdb/bin/xtensa-esp32-elf-gdb", //!MODIFY
+      "configFiles": [
+        // "interface/cmsis-dap.cfg",
+        "board/esp32-wrover-kit-3.3v.cfg"
+      ], //!MODIFY
+      "overrideAttachCommands": [
+        "set remote hardware-watchpoint-limit 2",
+        "mon halt",
+        "flushregs"
+      ],
+      "overrideRestartCommands": [
+        "mon reset halt",
+        "flushregs",
+        "c"
+      ],
+      "showDevDebugOutput": "raw"
+    }
+  ]
+}

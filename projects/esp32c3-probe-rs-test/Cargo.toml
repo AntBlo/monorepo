@@ -1,0 +1,41 @@
+[package]
+name = "esp32c3-probe-rs-test"
+version = "0.1.0"
+authors = ["ab"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[profile.release]
+debug = 2
+
+[profile.dev.package.esp-wifi]
+opt-level = 3
+
+[dependencies]
+esp32c3-hal = { version = "0.15.0", features = ["defmt", "eh1"] }
+esp-backtrace = { version = "0.11.0", default-features = false, features = [
+  "esp32c3",
+  "panic-handler",
+  "exception-handler",
+  "println",
+] }
+esp-println = { version = "0.9.0", features = [
+  "esp32c3",
+  "uart",
+  # "jtag-serial",
+  # "defmt-espflash",
+  "portable-atomic",
+  "critical-section",
+], default-features = false }
+
+esp-alloc = { version = "0.3.0" }
+# esp-wifi = { version = "0.3.0", default-features = false, features = [
+#   "esp32c3",
+#   "wifi",
+#   "defmt",
+# ] }
+#embedded-svc = { version = "0.27.0", default-features = false, features = [] }
+
+# defmt = "0.3.5"
+defmt-rtt = "0.3.2"
+# rtt-target = "0.5.0"

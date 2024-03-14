@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../libs/crates"
+		}
+	],
+	"settings": {
+		"rust-analyzer.check.extraArgs": [
+			"--",
+			"-W",
+			"clippy::all",
+			"-W",
+			"clippy::unwrap_used",
+			"-W",
+			"clippy::pedantic"
+		],
+		"rust-analyzer.workspace.symbol.search.scope": "workspace_and_dependencies",
+		"rust-analyzer.checkOnSave": true,
+		"rust-analyzer.assist.emitMustUse": true,
+		"rust-analyzer.showUnlinkedFileNotification": false,
+		"rust-analyzer.check.allTargets": false,
+		"dotnet.defaultSolution": "disable"
+	}
+}

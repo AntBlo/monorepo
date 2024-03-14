@@ -1,0 +1,41 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // more info at: https://github.com/Marus/cortex-debug/blob/master/package.json
+      "name": "Attach",
+      "type": "cortex-debug",
+      "request": "attach",
+      "cwd": "${workspaceRoot}",
+      "executable": "target/riscv32imc-esp-espidf/debug/ender-3-wifi",
+      "servertype": "openocd",
+      "interface": "jtag",
+      "svdFile": "esp32c3.svd",
+      "toolchainPrefix": "riscv32-esp-elf",
+      "gdbPath": "../../downloaded-deps/esp-tools/riscv32-esp-elf-gdb/bin/riscv32-esp-elf-gdb",
+      "openOCDPreConfigLaunchCommands": [
+        "set ESP_RTOS none"
+      ],
+      "serverpath": "../../downloaded-deps/esp-tools/openocd-esp32/bin/openocd",
+      "configFiles": [
+        "board/esp32c3-builtin.cfg"
+      ],
+      "overrideAttachCommands": [
+        "set remote hardware-watchpoint-limit 2",
+        "mon halt",
+        "maintenance flush register-cache"
+      ],
+      "overrideRestartCommands": [
+        "mon reset halt",
+        "maintenance flush register-cache",
+        "c"
+      ],
+      // "preLaunchTask": "build",
+      //"postDebugTask": "terminateAll",
+      "runToEntryPoint": "main",
+    }
+  ]
+}

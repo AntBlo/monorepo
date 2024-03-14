@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"command": "espflash erase-flash -p /dev/serial/by-id/usb-Espressif_USB_JTAG_serial_debug_unit_60:55:F9:C8:3D:D8-if00 && cargo run",
+			"label": "build",
+		},
+		{
+			"label": "terminateAll",
+			"command": "echo ${input:terminate}",
+			"type": "shell"
+		}
+	],
+	"inputs": [
+		{
+			"id": "terminate",
+			"type": "command",
+			"command": "workbench.action.tasks.terminate",
+			"args": "terminateAll"
+		}
+	]
+}
